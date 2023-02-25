@@ -8,27 +8,36 @@ Problem:
 
 const checkTargetSum = (lstNumber, target) => {
     let result = false;
-    lstNumber.forEach(number => {
-        result = (lstNumber.includes(target - number))
-    });
+    for (let idx = 0; idx < lstNumber.length; idx++) {
+        if (lstNumber.includes(target - lstNumber[idx])) return result = true;
+    }
     return result;
 }
 
 let testCase = [
     {
-        lstNumber: [10, 15, 3, 7],
-        k: 17
+        input: {
+            numbers: [10, 15, 3, 7],
+            k: 17
+        },
+        output: true,
     },
     {
-        lstNumber: [12, 8, 9, 21, 15, 3, 7],
-        k: 22
+        input: {
+            numbers: [12, 8, 9, 21, 15, 3, 7],
+            k: 22
+        },
+        output: true,
     },
     {
-        lstNumber: [12, 8, 9, 21, 15, 3, 7],
-        k: 29
+        input: {
+            numbers: [12, 8, 9, 21, 15, 3, 7],
+            k: 29
+        },
+        output: true,
     },
 ]
 
 testCase.forEach((caseItem) => {
-    console.log(checkTargetSum(caseItem.lstNumber, caseItem.k));
+    console.log(checkTargetSum(caseItem.input.numbers, caseItem.input.k) === caseItem.output);
 });
